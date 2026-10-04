@@ -126,7 +126,7 @@ def ping():
     if host:
         # VULN n°2 : Command injection, used with shell=true when spawning a subprocess (Bandit B602)
         result = subprocess.run(
-            f"ping -c 1 {host}", shell=True, capture_output=True, text=True, timeout=10
+            f"ping -n 1 {host}", shell=True, capture_output=True, text=True, timeout=10
         )
         output = result.stdout + result.stderr
     return render("ping.html", host=host, output=output)
