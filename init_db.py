@@ -1,4 +1,4 @@
-import hashlib
+from werkzeug.security import generate_password_hash
 import sqlite3
 
 DATABASE = "notes.db"
@@ -40,7 +40,7 @@ def main():
     db.executescript(SCHEMA)
 
     for username, password in USERS:
-        password_hash = hashlib.md5(password.encode()).hexdigest()
+        password_hash = generate_password_hash(password)
         db.execute(
             "INSERT INTO users (username, password_hash) VALUES (?, ?)",
             (username, password_hash),

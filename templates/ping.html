@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Network diagnostic</h1>
+<h1>Network diagnostics</h1>
 <form method="get" action="/admin/ping">
     <label>Host to test <input name="host" value="{{ host }}" placeholder="8.8.8.8"></label>
     <button type="submit">Ping</button>
 </form>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
 {% if output %}
 <pre>{{ output }}</pre>{% endif %}
 {% endblock %}
