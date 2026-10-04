@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>My notes</h1>
+
+<form method="get" action="/notes">
+    <input name="q" value="{{ q }}" placeholder="Rechercher par titre">
+    <button type="submit">Search</button>
+</form>
+{% if q %}<p>Results for : {{ q }}</p>{% endif %}
+
+<ul>
+    {% for note in notes %}
+    <li><a href="/notes/{{ note.id }}">{{ note.title }}</a></li>
+    {% else %}
+    <li>No notes.</li>
+    {% endfor %}
+</ul>
+
+<h2>New note</h2>
+<form method="post" action="/notes/new">
+    <label>Title <input name="title" required></label>
+    <label>Content <textarea name="content" rows="4" required></textarea></label>
+    <button type="submit">Add</button>
+</form>
+{% endblock %}

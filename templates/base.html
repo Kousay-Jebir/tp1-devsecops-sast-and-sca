@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Notes App</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 720px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            margin-right: 1rem;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+
+        .error {
+            color: #b00020;
+        }
+
+        input,
+        textarea {
+            display: block;
+            margin: .3rem 0 .8rem;
+            width: 100%;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        {% if user %}
+        <a href="/notes">My notes</a>
+        <a href="/admin/ping">Network test</a>
+        <a href="/profile/import">Preferences</a>
+        <a href="/logout">Logout ({{ user }})</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

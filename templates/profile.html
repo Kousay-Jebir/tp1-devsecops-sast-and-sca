@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Preferences</h1>
+{% if message %}<p>{{ message }}</p>{% endif %}
+<p>Current preferences : {{ prefs }}</p>
+<p><a href="/profile/export">Exporter mes préférences</a></p>
+<form method="post" action="/profile/import" enctype="multipart/form-data">
+    <label>Import preferences from a file <input type="file" name="prefs" required></label>
+    <button type="submit">Import</button>
+</form>
+{% endblock %}
